@@ -5,20 +5,6 @@
 @endsection
 
 @section('content')
-<style>
-    #flash {
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        padding: 1em;
-        display: inline-block;
-        z-index: 9000;
-        -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.3);
-        -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.3);
-        box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.3);
-        display: none;
-    }
-</style>
 <div id="flash" class=""></div>
 <div class="container">
     <div class="row">
@@ -29,7 +15,7 @@
                 <div class="panel-body">
                     You are logged in!
                     <br>
-                    <a href="{{ url('/cv') }}" target="_blank" class="btn btn-success pull-right"><i class="fa fa-btn fa-external-link"></i> View CV</a>
+                    <a href="{{ url('/cv') }}" target="_blank" class="view-cv-btn btn btn-success pull-right {{ $profile ? '' : 'disabled' }}"><i class="fa fa-btn fa-external-link"></i> View CV</a>
                 </div>
             </div>
 
@@ -289,7 +275,14 @@ $(function() {
             .done(function(data) {
                 $('#'+type+'FormModal').modal('hide');
                 if ( data.saved ) {
-                    $('#'+type+'-entries').prepend(data.entry);
+                    if ( type == 'profile' ) {
+                        form.attr('action', form.attr('action')+'/'+data.entry['id']);
+                        form.prepend($('<input type="hidden" name="_method" value="PUT">'));
+                        $('.view-cv-btn').removeClass('disabled');
+                    }
+                    else {
+                        $('#'+type+'-entries').prepend(data.entry);
+                    }
                 }
                 else if ( data.updated ) {
                     var entry = data.entry;

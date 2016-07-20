@@ -9227,5 +9227,15 @@ button.close {
 .entry-body {
   border-top: 1px solid #ddd;
 }
+#flash {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 1em;
+  display: inline-block;
+  z-index: 9000;
+  box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.3);
+  display: none;
+}
 
 /*# sourceMappingURL=cv.css.map */

@@ -1,4 +1,4 @@
-<form class="ajax-form" id="profileForm" role="form" method="POST" action="{{ url('/api/cv/profile') }}{{ $profile ? '/'.$profile->id : '' }}">
+<form class="ajax-form" id="profileForm" role="form" method="POST" action="{{ url('/api/cv/profile') }}{{ $profile ? '/'.$profile->id : '' }}" data-type="profile">
 
     @if ($profile)
     <input type="hidden" name="_method" value="PUT">
