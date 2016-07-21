@@ -40,7 +40,8 @@ MAIL_PORT=2525
 MAIL_USERNAME=mailtrapusername
 MAIL_PASSWORD=mailtrappassword
 MAIL_ENCRYPTION=null
-MAIL_CONTACT=your@email.com
+MAIL_FROM=your@email.com
+MAIL_NAME=yourname
 
 ```
 
